@@ -14,6 +14,9 @@ return [
         'user' => [
             'profile' => 'r,u'
         ],
+        'bank_user' => [
+            'account' => 'c,r,u'
+        ],
     ],
     'permission_structure' => [],
     'permissions_map' => [

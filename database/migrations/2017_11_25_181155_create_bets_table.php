@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateBetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('bets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('phone')->nullable()->unique();
-            $table->string('status')->nullable();
-            $table->string('verified')->nullable();
-            $table->rememberToken();
+            $table->string('slug')->unique();
+            $table->string('code')->unique();
+            $table->enum('type', ['ProPlay','ZeroPlay']);
+            $table->date('deadline');
+            $table->float('amount');
+            $table->string('options');
+            $table->enum('status', ['Active','Ended','Settled']);
+
             $table->timestamps();
         });
     }
@@ -33,6 +35,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('bets');
     }
 }
