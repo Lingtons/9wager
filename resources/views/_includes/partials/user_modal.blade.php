@@ -11,9 +11,9 @@
                         {{ csrf_field() }}
                         {{method_field('PUT')}}
 
-
-                        <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Role (optional)</label>
+                <div class="row">
+                    <div class="form-group">
+                            <label for="role_id" class="col-md-4 control-label">Role (optional)</label>
 
                             <div class="col-md-6">
                             <select id="role_id{{$user->id}}" class="form-control" name="role_id" required>
@@ -37,8 +37,8 @@
                             </select>
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('bank_id') ? ' has-error' : '' }}" id="bank{{$user->id}}">
-                            <label for="name" class="col-md-4 control-label">Bank</label>
+                        <div class="form-group" id="bank{{$user->id}}">
+                            <label for="bank_id" class="col-md-4 control-label">Bank</label>
 
                             <div class="col-md-6">
                             <select  class="form-control" name="bank_id">
@@ -61,7 +61,8 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

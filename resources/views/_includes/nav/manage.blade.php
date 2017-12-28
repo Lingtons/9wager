@@ -32,7 +32,48 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li><a href="{{ route('users.index') }}"><span class="icon">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <span class="icon">
+                              <i class="fa fa-lg fa-trophy m-r-5"></i>
+                            </span>Bets
+                             <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a href="{{route('manage.bets', ['type' => 'Today'])}}">Today</a>
+                                  </li>
+                                  <li><a href="{{route('manage.bets', ['type' => 'Active'])}}">Active</a>
+                                  </li>
+                                  <li><a href="{{route('manage.bets', ['type' => 'Verified'])}}">Verified</a>
+                                  </li>
+                              <li><a href="{{route('manage.bets', ['type' => 'Settled'])}}">Settled</a>
+                              </li>
+                              <li><a href="{{route('manage.bets', ['type' => 'All'])}}">All</a>
+                                  </li>
+                                </ul>
+                              </li>
+                                                          <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <span class="icon">
+                              <i class="fa fa-lg fa-money m-r-5"></i>
+                            </span>Accounts
+                             <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a href="{{route('manage.transactions', ['type' => 'Credit'])}}">Credit</a>
+                                  </li>
+                                  <li><a href="{{route('manage.transactions', ['type' => 'Debit'])}}">Debit</a>
+                                  </li>
+                              <li><a href="#">Income</a>
+                              </li>
+                              <li><a href="{{route('manage.transactions', ['type' => 'All'])}}">All</a>
+                                  </li>
+                                  <li><a href="#">Finance Report</a>
+                                </ul>
+                              </li> 
+                                    <li><a href="{{ route('users.index') }}"><span class="icon">
                               <i class="fa fa-lg fa-group m-r-5"></i>
                               </span>Users</a></li>
                             <li><a href="{{ route('manage.banks') }}"><span class="icon">

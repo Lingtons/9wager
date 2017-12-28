@@ -32,17 +32,33 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
+@if (Auth::user()->hasRole('bank_user'))
+    @if(Auth::user()->bank != "")
+                        <li><a  href="{{route('bank.dashboard')}}">
+                    <img src = "{{ asset('uploads/' . Auth::user()->bank->image_path)}}" alt="Bank Logo" height="20">
+                    </a></li>
+                    <li><a  href="{{route('bank.dashboard')}}">  {{Auth::user()->bank->name}} Panel    </a></li>
+    @endif
+@endif
+
+                    <li><a href="{{route('bet_list')}}"><span class="icon"><i class="fa fa-lg fa-trophy m-r-5"></i>
+                              </span>Bets</a>
+                    </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                  <li><a href="#"><span class="icon">
-                              <i class="fa fa-lg fa-trophy m-r-5"></i>
-                              </span>Games</a>
+                                    <li><a href="{{route('accounts.index')}}"><span class="icon">
+                              <i class="fa fa-lg fa-user m-r-10"></i>
+                              </span>Update Profile</a>
                                   </li>
-                                    <li><a href="#"><span class="icon">
+                            <li><a href="{{route('accounts.index')}}"><span class="icon">
+                              <i class="fa fa-lg fa-key m-r-5"></i>
+                              </span>Change Password</a>
+                                  </li>
+                                    <li><a href="{{route('accounts.index')}}"><span class="icon">
                               <i class="fa fa-lg fa-money m-r-5"></i>
                               </span>Accounts</a>
                                   </li>

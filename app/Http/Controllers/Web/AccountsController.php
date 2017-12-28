@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Web;
-
+use App\Models\Account;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
+
 
 class AccountsController extends Controller
 {
@@ -14,7 +16,11 @@ class AccountsController extends Controller
      */
     public function index()
     {
-        //
+        $credit = Account::where('user_id', Auth::user()->id )->where('type', 'Credit')->get()->sum('amount');
+        $debit = Account::where('user_id', Auth::user()->id )->where('type', 'Debit')->get()->sum('amount');
+
+        $deposits = Account::WHERE('user_id',Auth::user()->id)->get();
+            return view('user.accounts.list', compact('deposits', 'credit', 'debit'));
     }
 
     /**
@@ -82,4 +88,20 @@ class AccountsController extends Controller
     {
         //
     }
+
+        public function transactions($type)
+    {
+
+            if($type == 'All'){
+                $all = Account::all();
+            }elseif ($type == 'Credit') {
+                $all = Account::WHERE('type', 'Credit')->get();
+            }elseif ($type == 'Debit') {
+                $all = Account::WHERE('type', 'Dedit')->get();
+            }else{
+                $all = Account::all();
+            }
+            return view('manage.accounts.list', compact('all', 'type'));
+    }
+
 }

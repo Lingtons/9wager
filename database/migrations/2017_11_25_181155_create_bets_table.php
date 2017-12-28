@@ -16,13 +16,13 @@ class CreateBetsTable extends Migration
         Schema::create('bets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->string('code')->unique();
             $table->enum('type', ['ProPlay','ZeroPlay']);
             $table->date('deadline');
             $table->float('amount');
-            $table->string('options');
-            $table->enum('status', ['Active','Ended','Settled']);
+            $table->string('win_option')->nullable();
+            $table->enum('status', ['Active','Verified','Ended','Settled']);
 
             $table->timestamps();
         });

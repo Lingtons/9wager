@@ -9,20 +9,25 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Styles -->
+    <link href="{{asset('css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
     @include('_includes.nav.main')
+    @include('_includes.partials.alert')  
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('password_indicator/js/jaktutorial.js') }}"></script>
+    <script src="{{ asset('password_indicator/js/jaktutorial.js') }}"></script>
+    <script src="{{ asset('password_indicator/js/jquery.js') }}"></script>
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet" type="text/css"/>  
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+
     
     <script type="text/javascript">
     jQuery(document).ready(function(){
@@ -30,7 +35,28 @@
           passwordStrength(jQuery(this).val());
         });
     });
+
+
+
+    /*$(function() {
+     $( "#deadline" ).datepicker({ dateFormat: 'yy-mm-dd'}); 
+    });*/
+
     </script>
+
+    <script src="{{asset('js/dt/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/dt/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/dt/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('js/dt/buttons.bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/dt/buttons.flash.min.js')}}"></script>
+    <script src="{{asset('js/dt/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('js/dt/buttons.print.min.js')}}"></script>
+    <script src="{{asset('js/dt/pdfmake.min.js')}}"></script>
+    
+
+    <!-- Custom Theme Scripts -->
+    <script src="{{asset('js/dt_init2.js')}}"></script>
+
 
     <footer>
         

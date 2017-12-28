@@ -41,7 +41,7 @@ class ManageController extends Controller
         $image = $request->file('image');
         if ($image) {
             $image_name = time().'.'.$request->image->getClientOriginalExtension();
-            Image::make($image)->resize(128, 128)->save(public_path('uploads/'.$image_name));
+            Image::make($image)->resize(64, 64)->save(public_path('uploads/'.$image_name));
             return $image_name;
         }
         return null;

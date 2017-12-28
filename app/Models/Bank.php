@@ -9,4 +9,9 @@ class Bank extends Model
         protected $fillable = [
         'name', 'image_path'
     ];
+
+        public function users()
+    {
+        return $this->hasMany('App\Models\User');
+    }
 }

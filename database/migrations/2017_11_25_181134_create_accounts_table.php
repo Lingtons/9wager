@@ -16,9 +16,9 @@ class CreateAccountsTable extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');
             $table->float('amount');
-            $table->enum('type', ['Credit','Debit']);
+            $table->enum('type', ['Credit','Debit','Reward','Commission']);
             $table->string('description')->nullable();
-            $table->string('bank_reference')->nullable();      
+            $table->string('bank_reference')->unique()->nullable();      
             $table->timestamps();
         });
     }

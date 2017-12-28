@@ -29,4 +29,26 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function bank()
+    {
+        return $this->belongsTo('App\Models\Bank');
+    }
+
+        public function transactions()
+    {
+        return $this->hasMany('App\Models\Account');
+    }
+
+    public function bets()
+    {
+        return $this->hasMany('App\Models\Bet');
+    }
+
+    public function user_bets()
+    {
+        return $this->belongsToMany('App\Models\Bet')
+            ->withPivot('my_option');
+
+    }
 }

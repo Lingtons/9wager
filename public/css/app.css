@@ -5706,6 +5706,17 @@ button.list-group-item-danger.active:focus {
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ddd;
 }
+
+.panel-bet {
+  border-color: teal;
+  background-color: transparent;
+  background-image: url("../img/bg.jpg");
+  background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .panel-primary {
   border-color: #337ab7;
 }

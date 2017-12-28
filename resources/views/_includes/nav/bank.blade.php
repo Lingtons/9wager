@@ -32,7 +32,16 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
+                        @if (Auth::user()->hasRole('bank_user'))
+                        <li><a  href="{{route('bank.dashboard')}}">
+                    <img src = "{{ asset('uploads/' . Auth::user()->bank->image_path)}}" alt="Bank Logo" height="20">
+                    </a></li>
+                    <li><a  href="{{route('bank.dashboard')}}">  {{Auth::user()->bank->name}} Panel    </a></li>
+                    <li><a  href="{{route('bank.list')}}"> Transactions    </a></li>
+
+                        @endif
                             <li class="dropdown">
+
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
